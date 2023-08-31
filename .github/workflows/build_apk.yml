@@ -31,4 +31,10 @@ jobs:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
 
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release
+          path: build/ios/iphoneos/Runner.app
+
     
