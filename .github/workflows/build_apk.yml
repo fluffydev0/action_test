@@ -1,28 +1,29 @@
-name: Build APK
+name: Flutter Build Workflow
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust this branch name if needed
 
 jobs:
   build:
-    name: Build APK
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v3
+      - name: Set Up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: 3.10.6 # Specify your desired Flutter version
+          flutter-version: 2.x  # Use the desired Flutter version
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Run Tests
+        run: flutter test
 
-    
+      - name: Build APK
+        run: flutter build apk
