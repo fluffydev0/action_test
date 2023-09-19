@@ -25,19 +25,16 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-      - name: Upload APK artifact
+      - name: Build IPA
+        run: flutter build ios --release --no-codesign
+
+      - name: Upload APK and IPA
         uses: actions/upload-artifact@v2
         with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
-
-      - name: Build iOS 
-        run: flutter build ios --release
-
-      - name: Upload IPA artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release
-          path: build/ios/iphoneos/Runner.app
+          name: build-artifacts
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/ios/iphoneos/Runner.app
+      
 
     
