@@ -25,8 +25,8 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-      - name: Build IPA
-        run: flutter build ios 
+      # - name: Build IPA
+      #   run: flutter build ios 
 
       - name: Upload APK and IPA
         uses: actions/upload-artifact@v2
@@ -34,7 +34,7 @@ jobs:
           name: build-artifacts
           path: |
             build/app/outputs/flutter-apk/app-release.apk
-            build/ios/iphoneos/Runner.app
+            # build/ios/iphoneos/Runner.app
       
 
     
